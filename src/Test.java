@@ -1,7 +1,10 @@
 public class Test {
-	public static void main(final String[] args) {
-
-		System.out.println("Daniel will auch pushen!");
-		System.out.println("Und freut sich -- hurra!!");
+	public static void main(String... args) {
+		System.out.println("Test");
+		System.out.println("Beim Klotz gehts jetzt auch wieder...");// most
+																	// important
+																	// code in
+																	// whole
+																	// code
 	}
 }
