@@ -4,5 +4,6 @@ public class Test {
 		System.out
 				.println("Ich bin die Veränderung, die sich verändert hat und verdammt nochmal ńirgendwo funktioniert!!");
 		System.out.println("Schreibts doch mal was gscheites es Stoffeln es!");
+		System.out.println("Chris war hier");
 	}
 }
