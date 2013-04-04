@@ -1,6 +1,8 @@
 public class Test {
-	public static void main(String...args) {
+	public static void main(String... args) {
 		System.out.println("Test");
-		System.out.println("Ich bin die Veränderung, die sich verändert hat und verdammt nochmal ńirgendwo funktioniert!!");
+		System.out
+				.println("Ich bin die Veränderung, die sich verändert hat und verdammt nochmal ńirgendwo funktioniert!!");
+		System.out.println("Schreibts doch mal was gscheites es Stoffeln es!");
 	}
 }
