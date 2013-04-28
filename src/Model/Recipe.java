@@ -3,6 +3,7 @@ package Model;
 import java.awt.image.BufferedImage;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 
@@ -11,6 +12,12 @@ import java.util.List;
  */
 public class Recipe {
 
+	/**
+	 * A randomly generated, unique ID for the recipe.<br>
+	 * 
+	 * @see <a href="http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html">http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html</a>
+	 */
+	private UUID recipeID;
 	/**
 	 * The author of the recipe.
 	 */
@@ -69,7 +76,7 @@ public class Recipe {
 	/**
 	 * Constructor for a new Recipe.<br>
 	 * Comments and additionalPictures are initiated with <b>null</b> (as well as mainPicture, if none is uploaded) and a new Rating object is
-	 * created.
+	 * created. A random and unique ID (UUID) will also be created.
 	 * 
 	 * @param author
 	 *            The author of the recipe.
@@ -105,25 +112,8 @@ public class Recipe {
 		this.mainPicture = picture;
 		this.additionalPictures = null;
 		this.date = GregorianCalendar.YEAR * 10000 + GregorianCalendar.MONTH * 100 + GregorianCalendar.DAY_OF_MONTH;
-	}
-
-	/**
-	 * Lets any logged in user upload a new picture for a recipe.
-	 * 
-	 * @param newPicture
-	 *            The picture to be added to the recipe.
-	 * @param uploader
-	 *            The user that wants to upload a new picture.
-	 * @return <b>true</b> if the user is logged in, and <b>false</b> otherwise.
-	 */
-	public boolean addPicture(BufferedImage newPicture, User uploader) {
-		// TODO: getter for isLoggedIn in the User class needed
-		if (uploader.getIsLoggedIn() && newPicture != null) {
-			// TODO: an admin needs to validate the picture before it can be uploaded!
-			this.additionalPictures.add(newPicture);
-			return true;
-		} else
-			return false;
+		this.recipeID = UUID.randomUUID();
+		saveRecipe();
 	}
 
 	/**
@@ -153,27 +143,53 @@ public class Recipe {
 	public boolean editRecipe(User editor, String newName, String newShortDescription, String newHowToCook, int newTimeToCook,
 			int newPortions, List<Product> newIngredients, List<Integer> newTags, BufferedImage newPicture) {
 		// TODO: an equals method for the User class (to check if the editor is the author) needed
-		// TODO: getter for isAdminIn in the User class needed
-		if (editor.equals(author) || editor.getIsAdmin()) {
-			if (newName != null)
-				this.name = newName;
-			if (newShortDescription != null)
-				this.shortDescription = newShortDescription;
-			if (newHowToCook != null)
-				this.howToCook = newHowToCook;
-			if (newTimeToCook != 0)
-				this.timeToCook = newTimeToCook;
-			if (newPortions != 0)
-				this.portions = newPortions;
-			if (newIngredients != null)
-				this.ingredients = newIngredients;
-			if (newTags != null)
-				this.tags = newTags;
-			if (newPicture != null)
-				this.mainPicture = newPicture;
-			return true;
+		try {
+			if (editor.equals(author) || editor.isAdmin()) {
+				if (newName != null)
+					this.name = newName;
+				if (newShortDescription != null)
+					this.shortDescription = newShortDescription;
+				if (newHowToCook != null)
+					this.howToCook = newHowToCook;
+				if (newTimeToCook != 0)
+					this.timeToCook = newTimeToCook;
+				if (newPortions != 0)
+					this.portions = newPortions;
+				if (newIngredients != null)
+					this.ingredients = newIngredients;
+				if (newTags != null)
+					this.tags = newTags;
+				if (newPicture != null)
+					this.mainPicture = newPicture;
+				saveRecipe();
+				return true;
+			}
+			return false;
+		} catch (NullPointerException e) {
+			return false;
 		}
-		return false;
+	}
+
+	/**
+	 * Lets any logged in user upload a new picture for a recipe.
+	 * 
+	 * @param newPicture
+	 *            The picture to be added to the recipe.
+	 * @param uploader
+	 *            The user that wants to upload a new picture.
+	 * @return <b>true</b> if the user is logged in, and <b>false</b> otherwise.
+	 */
+	public boolean addPicture(BufferedImage newPicture, User uploader) {
+		try {
+			if (uploader.isLoggedIn() && newPicture != null) {
+				// TODO: an admin needs to validate the picture before it can be uploaded!
+				this.additionalPictures.add(newPicture);
+				return true;
+			} else
+				return false;
+		} catch (NullPointerException e) {
+			return false;
+		}
 	}
 
 	/**
@@ -186,12 +202,15 @@ public class Recipe {
 	 * @return <b>true</b> if the deleting User is an admin, and <b>false</b> otherwise.
 	 */
 	public boolean removeAdditionalPicture(User deletingUser, BufferedImage imageToRemove) {
-		// TODO: getter for isAdminIn in the User class needed
-		if (deletingUser.getIsAdmin()) {
-			this.additionalPictures.remove(imageToRemove);
-			return true;
+		try {
+			if (deletingUser.isAdmin()) {
+				this.additionalPictures.remove(imageToRemove);
+				return true;
+			}
+			return false;
+		} catch (NullPointerException | IndexOutOfBoundsException e) {
+			return false;
 		}
-		return false;
 	}
 
 	/**
@@ -204,12 +223,47 @@ public class Recipe {
 	 * @return <b>true</b> if the deleting User is an admin, and <b>false</b> otherwise.
 	 */
 	public boolean removeAdditionalPicture(User deletingUser, int imageToRemove) {
-		// TODO: getter for isAdminIn in the User class needed
-		if (deletingUser.getIsAdmin()) {
-			this.additionalPictures.remove(imageToRemove);
-			return true;
+		try {
+			if (deletingUser.isAdmin()) {
+				this.additionalPictures.remove(imageToRemove);
+				return true;
+			}
+			return false;
+		} catch (NullPointerException | IndexOutOfBoundsException e) {
+			return false;
 		}
-		return false;
+	}
+
+	/**
+	 * Adds a new comment to the recipe.
+	 * 
+	 * @param author
+	 *            The author of the comment.
+	 * @param commentText
+	 *            The text of the comment.
+	 * @return <b>true</b> if the adding of the comment was successful, otherwise <b>false</b>.
+	 */
+	public boolean addComment(User author, String commentText) {
+		try {
+			if (author.isLoggedIn()) {
+				this.comments.add(new Comment(author, commentText, this));
+				return true;
+			} else {
+				return false;
+			}
+		} catch (NullPointerException | IndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+
+	// TODO: addRating(), getRating(), updateRating()
+
+	public void saveRecipe() {
+		// TODO
+	}
+
+	public UUID getRecipeID() {
+		return recipeID;
 	}
 
 	public User getAuthor() {
