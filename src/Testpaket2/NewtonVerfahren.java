@@ -1,3 +1,4 @@
+package Testpaket2;
 
 public class NewtonVerfahren {
 	public static void main(String...args) {
