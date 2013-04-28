@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.GregorianCalendar;
+import java.util.UUID;
 
 /**
  * 
@@ -9,6 +10,12 @@ import java.util.GregorianCalendar;
  */
 public class Comment {
 
+	/**
+	 * A randomly generated, unique ID for the comment.<br>
+	 * 
+	 * @see <a href="http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html">http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html</a>
+	 */
+	private UUID commentID;
 	/**
 	 * The author of the comment.
 	 */
@@ -36,7 +43,7 @@ public class Comment {
 
 	/**
 	 * The constructor for a comment.<br>
-	 * The <b>date</b> is automatically calculated and <b>edited</b> is set on <b>false</b>.
+	 * The <b>date</b> is automatically calculated, an UUID is created, and <b>edited</b> is set on <b>false</b>.
 	 * 
 	 * @param author
 	 *            The author of the comment.
@@ -52,6 +59,7 @@ public class Comment {
 		this.recipe = recipe;
 		this.edited = false;
 		this.flagged = false;
+		this.commentID = UUID.randomUUID();
 	}
 
 	/**
