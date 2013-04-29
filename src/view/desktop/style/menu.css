@@ -1,0 +1,153 @@
+@CHARSET "UTF-8";
+
+/* ================================================================ 
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/final_drop2.html
+Copyright (c) 2005-2009 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+/* style the outer div to give it width */
+#menu {
+text-align:center;
+font: 105% Tahoma, Verdana, Arial, Helvetica, Sans-Serif, Sans;
+font-weight:bold;
+padding-left:10px;
+}
+/* remove all the bullets, borders and padding from the default list styling */
+#menu ul {
+padding:0;
+margin:0;
+list-style-type:none;
+}
+#menu ul ul {
+width:294px;
+}
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+#menu li {
+float:left;
+width:294px;
+position:relative;
+border-right: 1px solid #000000;
+border-top: 1px solid #000000;
+border-bottom: 1px solid #000000;
+
+}
+/* style the links for the top level */
+#menu a, #menu a:visited {
+	outline: none;
+	display:block;
+	text-decoration:none; 
+	width:294px;
+	height:30px; 
+	background: #417C2F; 
+	line-height:29px;
+}
+#menu ul li:first-child  {
+	border-left:1px solid #000000;
+	border-right: 1px solid #000000;
+}
+#menu a:link {
+	color:#FFFFFF;
+}
+
+/* a hack so that IE5.5 faulty box model is corrected */
+* html #menu a, * html #menu a:visited {
+
+	width:294px;
+	w\idth:275px;
+}
+/* style the second level background */
+#menu ul ul a.drop, #menu ul ul a.drop:visited {
+background-color:#c9ba30;
+}
+/* style the second level hover */
+#menu ul ul a.drop:hover{
+background-color:#c9ba30;
+}
+#menu ul ul :hover > a.drop {
+background-color:#c9ba30;
+}
+/* style the third level background */
+#menu ul ul ul a, #menu ul ul ul a:visited {
+background-color: #417C2F;
+}
+/* style the third level hover */
+#menu ul ul ul a:hover {
+background-color:#b2ab9b;
+}
+#menu ul ul ul :hover > a {
+background-color:#b2ab9b;
+}
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+#menu ul ul {
+visibility:hidden;
+position:absolute;
+height:0;
+top:31px;
+left:0; 
+width:294px;
+}
+/* another hack for IE5.5 */
+* html #menu ul ul {
+top:30px;
+t\op:31px;
+}
+
+/* position the third level flyout menu for a left flyout */
+#menu ul ul ul {
+top:0;
+left:-294px;
+}
+
+/* style the table so that it takes no part in the layout - required for IE to work */
+#menu table {position:absolute; top:0; left:0;}
+
+/* style the second level links */
+#menu ul ul a, #menu ul ul a:visited {
+background-color: #417C2F;
+height:auto; 
+line-height:1em; 
+padding:6px 0px; 
+width:294px;
+/* yet another hack for IE5.5 */
+}
+* html #menu ul ul a{
+width:294px;
+w\idth:254px;
+}
+
+
+/* style the top level hover */
+#menu a:hover, #menu ul ul a:hover{
+background-color:#417C2F;
+text-decoration:underline;
+}
+#menu :hover > a, #menu ul ul :hover > a {
+background-color: #417C2F;
+text-decoration:underline;
+}
+
+/* make the second level visible when hover on first level list OR link */
+#menu ul li:hover ul,
+#menu ul a:hover ul{
+visibility:visible;
+}
+/* keep the third level hidden when you hover on first level list OR link */
+#menu ul :hover ul ul{
+visibility:hidden;
+}
+/* keep the fourth level hidden when you hover on second level list OR link */
+#menu ul :hover ul :hover ul ul{
+visibility:hidden;
+}
+/* make the third level visible when you hover over second level list OR link */
+#menu ul :hover ul :hover ul{ 
+visibility:visible;
+}
+/* make the fourth level visible when you hover over third level list OR link */
+#menu ul :hover ul :hover ul :hover ul { 
+visibility:visible;
+}

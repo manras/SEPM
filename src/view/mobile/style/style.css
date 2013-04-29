@@ -1,0 +1,201 @@
+@CHARSET "UTF-8";
+
+
+#site a:link,a:visited {
+    color:#000000;
+}
+
+#header {
+	text-align:left; 
+	letter-spacing:0.5px;
+	line-height:1.4em;
+    min-height:50px;
+    padding-top:10px;
+    padding-bottom:10px;
+    overflow:visible;
+}
+#header form {
+	width:100%;
+}
+#list {
+	display:none;
+}
+
+#menu {
+	z-index:1;
+	font: 1.0em times, "Times New Roman", times-roman, georgia, serif;
+	
+}
+#menu ul {
+	list-style-type: none;
+	padding: 0px;
+	margin:0px;
+	background-color:#417C2F;
+	border-radius:15px;
+	-moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+#menu li {
+	line-height:3.2em;
+	list-style-type: none;
+
+	width:100%;
+	border-top: 1px solid #000000;
+	text-align:center;
+}
+#menu li:first-child {
+	border-top: 0px solid #000000;
+}
+#menu li a {
+	display:block;
+	text-decoration:none;
+}
+
+#menu li ul {
+	display:none;
+}
+
+#content {
+	text-align:justify; 
+	letter-spacing:0.5px;
+	line-height:1.4em;
+    min-height:50px;
+    padding-bottom:20px;
+    z-index:1;
+    overflow: auto
+}
+#content a:hover {
+	color:#A0A0A0;
+}
+#inlineList li {
+	margin-bottom:3em;
+}
+
+.add {
+	margin-left:5px;
+	background:url("add.png") no-repeat;
+	background-size: contain;
+	width:20px;
+	height:20px;
+	display:block;
+	float:right;
+}
+
+.delete {
+	margin-left:5px;
+	background:url("delete.png") no-repeat;
+	background-size: contain;
+	width:20px;
+	height:20px;
+	display:block;
+	float:right;
+}
+
+
+.example-container {
+				display: block;
+				color: #EEEEEE;
+				overflow: hidden;
+				padding: 20px;
+			}
+			
+a:link.star
+{
+	color: #EEEEEE !important;
+}
+.isometric-star-rating a.star:active ~ a.star,	/* All Stars that follows the pushed Star  */
+			.isometric-star-rating a.star,					/* Default Stars  */
+			.isometric-star-rating a.star:hover	~ a.star  { /* Color of the Stars after the hovered Star */
+				font:normal 25pt Arial;
+				float: left;
+				text-decoration: none;
+				color: #EEEEEE !important;
+				text-shadow: 	0 1px 0 #ccc,
+								0 2px 0 #c9c9c9,
+								0 3px 0 #bbb,
+								0 4px 0 #b9b9b9,
+								0 5px 0 #aaa,
+								0 6px 0 rgba(0,0,0,.4),
+								0 6px 1px rgba(0,0,0,.1),
+								0 0 5px rgba(0,0,0,.1),
+								0 1px 3px rgba(0,0,0,.3),
+								0 3px 5px rgba(0,0,0,.2),
+								0 5px 10px rgba(0,0,0,.25),
+								0 10px 10px rgba(0,0,0,.2),
+								0 20px 20px rgba(0,0,0,.15);
+				position: relative; 
+				top: 0;
+			}
+			
+			
+			.isometric-star-rating,	/* Default Color of the Stars */
+			.isometric-star-rating a.star:hover	~ a.star { /* Color of the Stars after the hovered Star */
+				color: #EEEEEE !important;
+			}
+			
+			.isometric-star-rating:hover a.star,
+			.isometric-star-rating a.star:hover { /* Hover Color of the Stars */
+				color: #FFF11E !important;
+				text-shadow: 	0 1px 0 #d2c619,
+								0 2px 0 #c7bc17,
+								0 3px 0 #bcb216,
+								0 4px 0 #b0a615,
+								0 5px 0 #a69d14,
+								0 6px 0 rgba(0,0,0,.4),
+								0 6px 1px rgba(0,0,0,.1),
+								0 0 5px rgba(0,0,0,.1),
+								0 1px 3px rgba(0,0,0,.3),
+								0 3px 5px rgba(0,0,0,.2),
+								0 5px 10px rgba(0,0,0,.25),
+								0 10px 10px rgba(0,0,0,.2),
+								0 20px 20px rgba(0,0,0,.15);
+			}
+						
+						
+			.isometric-star-rating:active a.star {  /* Pushed Down Status */
+				top: 2px;
+				color: #fff15b !important; 
+				text-shadow: 	0 1px 0 #dbcf4e,
+								0 2px 0 #cec34a,
+								0 3px 0 #c1b645,
+								0 4px 0 rgba(0,0,0,.3),
+								0 4px 1px rgba(0,0,0,.1),
+								0 0 3px rgba(0,0,0,.1),
+								0 1px 2px rgba(0,0,0,.5),
+								0 1px 1px rgba(0,0,0,.6),
+								0 2px 3px rgba(0,0,0,.2),
+								0 3px 7px rgba(0,0,0,.25),
+								0 7px 7px rgba(0,0,0,.2),
+								0 15px 15px rgba(0,0,0,.15),
+								0 -2px 3px rgba(255,255,255,.5),
+								0 -1px 1px rgba(255,255,255,.7);
+			}
+			
+#commentText {
+	width:60%;
+	height:150px;
+	border: 1px solid #000000;
+}
+#comments {
+	border:1px solid #000000;
+	padding-top:2%;
+	padding-bottom:2%;
+	padding-left:5%;
+}
+#comments a {
+	padding-left:5px;
+}
+.comment {
+	border: 1px dotted #000000;
+	padding-top:2%;
+	padding-bottom:2%;
+	padding-left:5%;
+	display:inline-block;
+	padding-right:5%;
+	margin-bottom:3%;
+}
+.comment h4 {
+	display: inline-block;
+	background-color:#417C2F;
+}
